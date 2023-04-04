@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Recipes App</string>
+    <string name="recipes_fragment">Recipes</string>
+    <string name="favorite_recipes_fragment">Favorites</string>
+    <string name="food_joke_fragment">Food Joke</string>
+    <string name="recipes_maps_fragment">Maps Recipes</string>
 </resources>
