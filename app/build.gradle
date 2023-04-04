@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kapt)
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -61,6 +62,11 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
+
+    // Dagger - Hilt
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.android.compiler)
+    kapt(libs.androidx.hilt)
 
     // Test Libraries
     testImplementation(libs.junit)
