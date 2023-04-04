@@ -6,7 +6,7 @@
     app:startDestination="@id/recipesFragment">
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.sandoval.recipesapp.ui.fragments.RecipesFragment"
+        android:name="com.sandoval.recipesapp.ui.list_recipes.fragments.RecipesFragment"
         android:label="Recipes"
         tools:layout="@layout/fragment_recipes" />
     <fragment
