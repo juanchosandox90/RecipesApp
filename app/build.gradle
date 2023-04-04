@@ -49,14 +49,18 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
 
     // Image Loading library Coil
-    implementation (libs.io.coil.kt)
+    implementation(libs.io.coil.kt)
 
     // Gson
-    implementation (libs.google.gson)
+    implementation(libs.google.gson)
 
     // Shimmer
-    implementation (libs.facebook.shimmer)
-    implementation (libs.todkars.shimmer)
+    implementation(libs.facebook.shimmer)
+    implementation(libs.todkars.shimmer)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 
     // Test Libraries
     testImplementation(libs.junit)

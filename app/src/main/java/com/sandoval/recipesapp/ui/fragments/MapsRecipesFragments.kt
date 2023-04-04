@@ -1,4 +1,4 @@
-package com.sandoval.recipesapp.fragments
+package com.sandoval.recipesapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.sandoval.recipesapp.R
 
-class RecipesFragment : Fragment() {
-
+class MapsRecipesFragments : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipes, container, false)
+        return inflater.inflate(
+            R.layout.fragment_maps_recipes_fragments, container, false
+        )
     }
 
 }
