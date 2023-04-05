@@ -11,7 +11,7 @@ import com.sandoval.recipesapp.R
 class RecipesRowBinding {
 
     companion object {
-        @BindingAdapter("loadImageFromUrl")
+        @BindingAdapter("android:loadImageFromUrl")
         @JvmStatic
         fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
             imageView.load(imageUrl) {
@@ -19,19 +19,19 @@ class RecipesRowBinding {
             }
         }
 
-        @BindingAdapter("setNumberOfLikes")
+        @BindingAdapter("android:setNumberOfLikes")
         @JvmStatic
         fun setNumberOfLikes(textView: TextView, likes: Int) {
             textView.text = likes.toString()
         }
 
-        @BindingAdapter("setNumberOfMinutes")
+        @BindingAdapter("android:setNumberOfMinutes")
         @JvmStatic
         fun setNumberOfMinutes(textView: TextView, minutes: Int) {
             textView.text = minutes.toString()
         }
 
-        @BindingAdapter("applyVeganColor")
+        @BindingAdapter("android:applyVeganColor")
         @JvmStatic
         fun applyVeganColor(view: View, vegan: Boolean) {
             if (vegan) {
