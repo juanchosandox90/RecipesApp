@@ -12,6 +12,10 @@
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
             app:destination="@id/recipesBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
@@ -32,7 +36,7 @@
         android:id="@+id/recipesBottomSheet"
         android:name="com.sandoval.recipesapp.ui.list_recipes.bottomsheet.RecipesBottomSheetFragment"
         android:label="recipes_bottom_sheet"
-        tools:layout="@layout/fragment_recipes_bottom_sheet" >
+        tools:layout="@layout/fragment_recipes_bottom_sheet">
         <action
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
             app:destination="@id/recipesFragment" />
