@@ -26,7 +26,7 @@ class MainViewModel @Inject constructor(
         getRecipesSafeCall(queries)
     }
 
-    private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
+    suspend fun getRecipesSafeCall(queries: Map<String, String>) {
         recipesResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
@@ -42,7 +42,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun handleRecipesResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe>? {
+    private fun handleRecipesResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe> {
         when {
             response.message().toString().contains("timeout") -> {
                 return NetworkResult.Error("Timeout")
@@ -63,7 +63,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun hasInternetConnection(): Boolean {
+    fun hasInternetConnection(): Boolean {
         val connectivityManager =
             getApplication<Application>().getSystemService(
                 Context.CONNECTIVITY_SERVICE
