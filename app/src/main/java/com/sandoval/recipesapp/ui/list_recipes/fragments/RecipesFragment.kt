@@ -17,6 +17,7 @@ import com.sandoval.recipesapp.databinding.FragmentRecipesBinding
 import com.sandoval.recipesapp.ui.list_recipes.adapter.RecipesAdapter
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.RecipesViewModel
+import com.sandoval.recipesapp.utils.NetworkListener
 import com.sandoval.recipesapp.utils.NetworkResult
 import com.sandoval.recipesapp.utils.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +31,8 @@ class RecipesFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
+
+    private lateinit var networkListener: NetworkListener
 
     private var _recipesFragmentBinding: FragmentRecipesBinding? = null
     private val recipesFragmentBinding get() = _recipesFragmentBinding!!
@@ -52,10 +55,29 @@ class RecipesFragment : Fragment() {
         recipesFragmentBinding.mainViewModel = mainViewModel
 
         setupRecyclerView()
-        readDatabase()
+
+        recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
+            recipesViewModel.backOnline = it
+        }
+
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect() { status ->
+                    recipesViewModel.networkStatus = status
+                    recipesViewModel.showNetworkStatus()
+                    readDatabase()
+                }
+        }
+
 
         recipesFragmentBinding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            if (recipesViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            } else {
+                recipesViewModel.showNetworkStatus()
+            }
+
         }
 
         return recipesFragmentBinding.root
