@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sandoval.recipesapp.R
 import com.sandoval.recipesapp.databinding.FragmentRecipesBinding
 import com.sandoval.recipesapp.ui.list_recipes.adapter.RecipesAdapter
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel
@@ -48,6 +50,10 @@ class RecipesFragment : Fragment() {
 
         setupRecyclerView()
         readDatabase()
+
+        recipesFragmentBinding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+        }
 
         return recipesFragmentBinding.root
     }

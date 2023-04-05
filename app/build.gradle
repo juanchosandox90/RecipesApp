@@ -81,6 +81,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.livedata)
 
+    // DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
     // Test Libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)

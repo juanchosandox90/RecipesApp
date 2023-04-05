@@ -8,7 +8,11 @@
         android:id="@+id/recipesFragment"
         android:name="com.sandoval.recipesapp.ui.list_recipes.fragments.RecipesFragment"
         android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes">
+        <action
+            android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
+            app:destination="@id/recipesBottomSheet" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
         android:name="com.sandoval.recipesapp.ui.fragments.FavoriteRecipesFragment"
@@ -24,4 +28,13 @@
         android:name="com.sandoval.recipesapp.ui.fragments.MapsRecipesFragments"
         android:label="Maps Recipes"
         tools:layout="@layout/fragment_maps_recipes_fragments" />
+    <dialog
+        android:id="@+id/recipesBottomSheet"
+        android:name="com.sandoval.recipesapp.ui.list_recipes.bottomsheet.RecipesBottomSheetFragment"
+        android:label="recipes_bottom_sheet"
+        tools:layout="@layout/fragment_recipes_bottom_sheet" >
+        <action
+            android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
 </navigation>
