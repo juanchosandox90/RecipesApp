@@ -8,4 +8,7 @@ class RemoteDataSource @Inject constructor(
 ) {
     suspend fun getRecipes(queries: Map<String, String>) =
         recipesApi.getRecipes(queries)
+
+    suspend fun searchRecipes(queries: Map<String, String>) =
+        recipesApi.searchRecipes(queries)
 }

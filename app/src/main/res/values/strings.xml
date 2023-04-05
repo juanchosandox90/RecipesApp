@@ -38,4 +38,6 @@
     <string name="paleo_chip_text">Paleo</string>
     <string name="primal_chip_text">Primal</string>
     <string name="apply_button_text">Apply</string>
+
+    <string name="recipes_menu_search_title">Search</string>
 </resources>

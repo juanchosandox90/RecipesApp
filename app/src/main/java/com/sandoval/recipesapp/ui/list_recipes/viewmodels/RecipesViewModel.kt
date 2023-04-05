@@ -16,6 +16,7 @@ import com.sandoval.recipesapp.utils.Constants.Companion.QUERY_TYPE
 import com.sandoval.recipesapp.utils.Constants.Companion.QUERY_DIET
 import com.sandoval.recipesapp.utils.Constants.Companion.QUERY_ADD_RECIPE_INFORMATION
 import com.sandoval.recipesapp.utils.Constants.Companion.QUERY_FILL_INGREDIENTS
+import com.sandoval.recipesapp.utils.Constants.Companion.QUERY_SEARCH
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -70,12 +71,26 @@ class RecipesViewModel @Inject constructor(
         return queries
     }
 
-    fun showNetworkStatus(){
+    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+        queries[QUERY_SEARCH] = searchQuery
+        queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
+        return queries
+    }
+
+    fun showNetworkStatus() {
         if (!networkStatus) {
-            Toast.makeText(getApplication(), "Network is not available", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                getApplication(), "Network is not available", Toast.LENGTH_LONG
+            ).show()
             saveBackOnline(true)
-        } else if (networkStatus){
-            Toast.makeText(getApplication(), "Network is available", Toast.LENGTH_LONG).show()
+        } else if (networkStatus) {
+            Toast.makeText(
+                getApplication(), "Network is available", Toast.LENGTH_LONG
+            ).show()
             saveBackOnline(false)
         }
     }

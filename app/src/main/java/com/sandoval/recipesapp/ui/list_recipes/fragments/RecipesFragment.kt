@@ -2,11 +2,13 @@ package com.sandoval.recipesapp.ui.list_recipes.fragments
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -19,12 +21,13 @@ import com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.RecipesViewModel
 import com.sandoval.recipesapp.utils.NetworkListener
 import com.sandoval.recipesapp.utils.NetworkResult
+import com.sandoval.recipesapp.utils.hideKeyboard
 import com.sandoval.recipesapp.utils.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment() {
+class RecipesFragment : Fragment(),SearchView.OnQueryTextListener {
 
     private val args: RecipesFragmentArgs by navArgs()
 
@@ -70,7 +73,6 @@ class RecipesFragment : Fragment() {
                 }
         }
 
-
         recipesFragmentBinding.floatingActionButton.setOnClickListener {
             if (recipesViewModel.networkStatus) {
                 findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
@@ -80,7 +82,35 @@ class RecipesFragment : Fragment() {
 
         }
 
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.recipes_menu, menu)
+
+                val search = menu.findItem(R.id.menuSearch)
+                val searchView = search.actionView as? SearchView
+                searchView?.isSubmitButtonEnabled = true
+                searchView?.setOnQueryTextListener(this@RecipesFragment)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         return recipesFragmentBinding.root
+    }
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query != null) {
+            hideKeyboard()
+            searchApiData(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        return true
     }
 
     /** At first implementation the observer was being called twice, first if DB was empty
@@ -122,6 +152,41 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Loading -> {
                     showShimmerEffect()
+                }
+            }
+        }
+    }
+
+    private fun searchApiData(searchQuery: String) {
+        Log.d("RecipesFragment", "searchApiData called!")
+        showShimmerEffect()
+        mainViewModel.searchRecipes(
+            recipesViewModel.applySearchQuery(
+                searchQuery
+            )
+        )
+        mainViewModel.searchRecipesResponse.observe(
+            viewLifecycleOwner
+        ) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    val foodRecipe = response.data
+                    foodRecipe?.let {
+                        mAdapter.setData(it)
+                    }
+                }
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    loadDataFromCache()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                is NetworkResult.Loading -> {
+                    hideShimmerEffect()
                 }
             }
         }
