@@ -30,7 +30,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
+        freeCompilerArgs += [
+                "-opt-in=kotlin.time.ExperimentalTime",
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        ]
     }
 
     buildFeatures {
@@ -68,6 +72,11 @@ dependencies {
     kapt(libs.dagger.hilt.android.compiler)
     kapt(libs.androidx.hilt)
 
+    // Room components
+    implementation(libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
+
     // Test Libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
@@ -80,4 +89,5 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     implementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.kotlin)
+    androidTestImplementation (libs.androidx.room.testing)
 }

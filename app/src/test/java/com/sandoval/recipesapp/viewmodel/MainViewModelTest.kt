@@ -6,16 +6,22 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import com.sandoval.recipesapp.data.Repository
+import com.sandoval.recipesapp.data.models.FoodRecipe
+import com.sandoval.recipesapp.data.models.Result
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel
-import io.mockk.every
-import io.mockk.mockk
-import junit.framework.TestCase.assertFalse
-import junit.framework.TestCase.assertTrue
+import com.sandoval.recipesapp.utils.NetworkResult
+import io.mockk.*
+import junit.framework.TestCase.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.*
+import okhttp3.MediaType
+import okhttp3.ResponseBody
 import org.junit.*
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import retrofit2.Response
 
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
@@ -33,6 +39,69 @@ class MainViewModelTest {
         connectivityManager = mockk()
         viewModel = MainViewModel(repository, context)
         every { context.getSystemService(Context.CONNECTIVITY_SERVICE) } returns connectivityManager
+    }
+
+    @Test
+    fun `test handleRecipesResponse method with successful response`() {
+        val mockedResponse = Response.success(
+            FoodRecipe(
+                results = listOf(
+                    Result(
+                        aggregateLikes = 234,
+                        cheap = false,
+                        dairyFree = true,
+                        extendedIngredients = emptyList(),
+                        glutenFree = true,
+                        id = 1,
+                        image = "imageUrl",
+                        readyInMinutes = 200,
+                        sourceName = "sajsa",
+                        sourceUrl = "aisjas",
+                        summary = "asuha",
+                        title = "summary",
+                        vegan = true,
+                        vegetarian = true,
+                        veryHealthy = true
+                    )
+                )
+            )
+        )
+
+        val result = viewModel.handleRecipesResponse(mockedResponse)
+
+        assertTrue(result is NetworkResult.Success)
+        assertEquals(
+            mockedResponse.body(), (result as NetworkResult.Success).data
+        )
+    }
+
+
+    @Test
+    fun `test handleRecipesResponse method with API key limited error`() {
+        val mockedResponse = Response.error<FoodRecipe>(
+            402, ResponseBody.create(
+                MediaType.parse("application/json"), "API key limited error"
+            )
+        )
+
+        val result = viewModel.handleRecipesResponse(mockedResponse)
+
+        assertTrue(result is NetworkResult.Error)
+        assertEquals(
+            "API Key Limited.", (result as NetworkResult.Error).message
+        )
+    }
+
+    @Test
+    fun `test handleRecipesResponse method with empty results error`() {
+        val mockedResponse = Response.success(FoodRecipe(results = emptyList()))
+
+        val result = viewModel.handleRecipesResponse(mockedResponse)
+
+        assertTrue(result is NetworkResult.Error)
+        assertEquals(
+            "Recipes Not Found.", (result as NetworkResult.Error).message
+        )
     }
 
     @Test
