@@ -6,37 +6,41 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import com.sandoval.recipesapp.data.Repository
+import com.sandoval.recipesapp.data.local.LocalDataSource
 import com.sandoval.recipesapp.data.models.FoodRecipe
 import com.sandoval.recipesapp.data.models.Result
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel
 import com.sandoval.recipesapp.utils.NetworkResult
 import io.mockk.*
 import junit.framework.TestCase.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.*
 import okhttp3.MediaType
 import okhttp3.ResponseBody
 import org.junit.*
 import org.junit.runner.RunWith
-import org.mockito.Mock
+import org.mockito.Mockito.mock
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
 
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
 
-
-    @Mock
     private lateinit var repository: Repository
     private lateinit var context: Application
     private lateinit var connectivityManager: ConnectivityManager
+    private lateinit var localDataSource: LocalDataSource
     private lateinit var viewModel: MainViewModel
 
     @Before
     fun setUp() {
         context = mockk()
         connectivityManager = mockk()
+        repository = mockk()
+        localDataSource = mockk()
+        every { repository.local } returns localDataSource
+        every { localDataSource.readDataBase() } returns flowOf(listOf())
+        coEvery { localDataSource.insertRecipes(any()) } just Runs
         viewModel = MainViewModel(repository, context)
         every { context.getSystemService(Context.CONNECTIVITY_SERVICE) } returns connectivityManager
     }

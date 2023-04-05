@@ -1,20 +1,23 @@
 package com.sandoval.recipesapp.ui.list_recipes.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sandoval.recipesapp.R
 import com.sandoval.recipesapp.databinding.FragmentRecipesBinding
 import com.sandoval.recipesapp.ui.list_recipes.adapter.RecipesAdapter
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel
 import com.sandoval.recipesapp.ui.list_recipes.viewmodels.RecipesViewModel
 import com.sandoval.recipesapp.utils.NetworkResult
+import com.sandoval.recipesapp.utils.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -22,6 +25,7 @@ class RecipesFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
+
     private var _recipesFragmentBinding: FragmentRecipesBinding? = null
     private val recipesFragmentBinding get() = _recipesFragmentBinding!!
 
@@ -39,14 +43,36 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _recipesFragmentBinding = FragmentRecipesBinding.inflate(layoutInflater)
+        recipesFragmentBinding.lifecycleOwner = this
+        recipesFragmentBinding.mainViewModel = mainViewModel
 
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
 
         return recipesFragmentBinding.root
     }
 
+    /** At first implementation the observer was being called twice, first if DB was empty
+     * requestApiData and after that as the observer keep observing, and the DB was not empty
+     * anymore, called mAdapter.setData(database[0].foodRecipe), means called the data from the DB
+     * and DB entity. So this is solved using a property from observers called ObserveOnce from my
+     * Extension Functions. **/
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called!")
+                    mAdapter.setData(database[0].foodRecipe)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            }
+        }
+    }
+
     private fun requestApiData() {
+        Log.d("RecipesFragment", "requestApiData called!")
         mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -56,6 +82,7 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -69,9 +96,20 @@ class RecipesFragment : Fragment() {
         }
     }
 
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    mAdapter.setData(database[0].foodRecipe)
+                }
+            }
+        }
+    }
+
     private fun setupRecyclerView() {
         recipesFragmentBinding.recyclerview.adapter = mAdapter
-        recipesFragmentBinding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        recipesFragmentBinding.recyclerview.layoutManager =
+            LinearLayoutManager(requireContext())
         showShimmerEffect()
     }
 

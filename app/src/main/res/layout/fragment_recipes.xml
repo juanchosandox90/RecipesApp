@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+      <variable
+          name="mainViewModel"
+          type="com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,6 +69,8 @@
             android:layout_height="100dp"
             android:alpha="0.5"
             android:contentDescription="@string/error_image_view_text"
+            readApiResponse="@{mainViewModel.recipesResponse}"
+            readDatabase="@{mainViewModel.readRecipes}"
             android:src="@drawable/ic_sad"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +85,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0.5"
-            android:text="@string/no_internet_connection_text"
+            readApiResponseText="@{mainViewModel.recipesResponse}"
+            readDatabaseText="@{mainViewModel.readRecipes}"
+            android:textColor="@color/colorAccent"
             android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="invisible"
