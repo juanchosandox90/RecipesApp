@@ -59,7 +59,7 @@ class RecipesFragment : Fragment(),SearchView.OnQueryTextListener {
 
         setupRecyclerView()
 
-        recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
+        recipesViewModel.readBackOnline?.observe(viewLifecycleOwner) {
             recipesViewModel.backOnline = it
         }
 
