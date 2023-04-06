@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
+import com.google.android.material.tabs.TabLayoutMediator
 import com.sandoval.recipesapp.R
 import com.sandoval.recipesapp.databinding.ActivityDetailsBinding
 import com.sandoval.recipesapp.ui.details_recipes.adapter.ViewPagerDetailRecipesAdapter
@@ -49,13 +50,19 @@ class DetailsRecipeActivity : AppCompatActivity() {
         resultBundle.putParcelable(RECIPE_RESULT_KEY, args.result)
 
         val pagerAdapter = ViewPagerDetailRecipesAdapter(
-            resultBundle, fragments, titles, supportFragmentManager
+            resultBundle, fragments, this
         )
+        detailsRecipesActivitybinding.viewPager2.isUserInputEnabled = false
+        detailsRecipesActivitybinding.viewPager2.apply {
+            adapter = pagerAdapter
+        }
 
-        detailsRecipesActivitybinding.viewPager.adapter = pagerAdapter
-        detailsRecipesActivitybinding.tabLayout.setupWithViewPager(
-            detailsRecipesActivitybinding.viewPager
-        )
+        TabLayoutMediator(
+            detailsRecipesActivitybinding.tabLayout,
+            detailsRecipesActivitybinding.viewPager2
+        ) { tab, position ->
+            tab.text = titles[position]
+        }.attach()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

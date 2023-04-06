@@ -17,13 +17,17 @@
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
+    <color name="backgroundColor">@color/lightGray</color>
+    <color name="placeholderColor">@color/mediumGray</color>
+    <color name="itemColor">@color/darker</color>
+
     <!--CustomChip Colors-->
     <color name="checkedChipBackgroundColor">@color/dark</color>
     <color name="uncheckedChipBackgroundColor">@color/lightMediumGray</color>
     <color name="checkedChipTextColor">@color/lightGray</color>
     <color name="uncheckedChipTextColor">@color/darkGray</color>
 
-    <color name="actionBarBackgroundColor">@color/colorPrimary</color>
+    <color name="actionBarBackgroundColor">@color/darker</color>
 
     <!--Custom Ingredients Colors-->
     <color name="strokeColor">@color/lightMediumGray</color>
