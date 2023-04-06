@@ -44,6 +44,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Overview Fragment Strings-->
+    <string name="overview_fragment_vegetarian_tag">Vegetarian</string>
+    <string name="overview_fragment_vegan_tag">Vegan</string>
+    <string name="overview_fragment_gluten_free_tag">Gluten Free</string>
+    <string name="overview_fragment_dairy_free_tag">Dairy Free</string>
+    <string name="overview_fragment_healthy_tag">Healthy</string>
+    <string name="overview_fragment_cheap_tag">Cheap</string>
     <string name="overview_fragment_image_view_desc">Image view overview</string>
     <string name="overview_fragment_likes_imageview_desc">likes overview imageview</string>
     <string name="overview_fragment_time_imageview_desc">time overview imageview desc</string>
