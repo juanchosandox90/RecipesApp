@@ -86,6 +86,9 @@ dependencies {
     // DataStore
     implementation(libs.androidx.datastore)
 
+    //Jsoup
+    implementation(libs.jsoup)
+
     // Test Libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
