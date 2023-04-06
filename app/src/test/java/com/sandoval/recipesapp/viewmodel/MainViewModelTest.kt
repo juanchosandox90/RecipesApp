@@ -40,6 +40,8 @@ class MainViewModelTest {
         every { repository.local } returns localDataSource
         every { localDataSource.readDataBase() } returns flowOf(listOf())
         coEvery { localDataSource.insertRecipes(any()) } just Runs
+        every { localDataSource.readFoodJoke() } returns flowOf(listOf())
+        coEvery { localDataSource.insertFoodJoke(any()) } just Runs
         viewModel = MainViewModel(repository, context)
         every { context.getSystemService(Context.CONNECTIVITY_SERVICE) } returns connectivityManager
     }
