@@ -40,4 +40,17 @@
     <string name="apply_button_text">Apply</string>
 
     <string name="recipes_menu_search_title">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Overview Fragment Strings-->
+    <string name="overview_fragment_image_view_desc">Image view overview</string>
+    <string name="overview_fragment_likes_imageview_desc">likes overview imageview</string>
+    <string name="overview_fragment_time_imageview_desc">time overview imageview desc</string>
+    <string name="overview_fragment_vegetarian_imageview_desc">vegetarian imageview desc</string>
+    <string name="overview_fragment_vegan_imageview_desc">vegan imageview desc</string>
+    <string name="overview_fragment_gluten_free_imageview_desc">Gluten Free Imageview Desc</string>
+    <string name="overview_fragment_dairy_free_imageview_desc">Dairy Free Imageview Desc</string>
+    <string name="overview_fragment_healthy_imageview_desc">Healthy Imageview Desc</string>
+    <string name="overview_fragment_cheap_imageview_desc">Cheap Imageview desc</string>
 </resources>
