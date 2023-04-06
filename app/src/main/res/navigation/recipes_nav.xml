@@ -21,11 +21,6 @@
             app:destination="@id/detailsRecipesActivity" />
     </fragment>
     <fragment
-        android:id="@+id/favoriteRecipesFragment"
-        android:name="com.sandoval.recipesapp.ui.fragments.FavoriteRecipesFragment"
-        android:label="Favorites"
-        tools:layout="@layout/fragment_favorite_recipes" />
-    <fragment
         android:id="@+id/foodJokeFragment"
         android:name="com.sandoval.recipesapp.ui.fragments.FoodJokeFragment"
         android:label="Food Joke"
