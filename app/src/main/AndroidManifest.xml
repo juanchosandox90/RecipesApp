@@ -16,6 +16,11 @@
         android:theme="@style/Theme.RecipesApp"
         tools:targetApi="33">
         <activity
+            android:name=".ui.details_recipes.DetailsRecipeActivity"
+            android:exported="false"
+            android:label="Details"
+            android:theme="@style/DetailsActvitiyStyle" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
