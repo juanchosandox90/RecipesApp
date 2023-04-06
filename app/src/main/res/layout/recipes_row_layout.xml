@@ -5,6 +5,7 @@
 
 
     <data>
+
         <variable
             name="result"
             type="com.sandoval.recipesapp.data.models.Result" />
@@ -15,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp">
+        android:layout_marginBottom="4dp"
+        android:onRecipeClickListener="@{result}">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/row_cardView"
@@ -39,8 +41,8 @@
                     android:id="@+id/recipe_imageView"
                     android:layout_width="200dp"
                     android:layout_height="0dp"
-                    android:scaleType="centerCrop"
                     android:loadImageFromUrl="@{result.image}"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -97,34 +99,34 @@
                     android:id="@+id/heart_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="100"
                     android:setNumberOfLikes="@{result.aggregateLikes}"
-                    android:textColor="@color/red"
                     android:textAlignment="center"
+                    android:textColor="@color/red"
                     app:layout_constraintStart_toStartOf="@+id/description_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/heart_imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/heart_imageView"
+                    tools:text="100" />
 
                 <ImageView
                     android:id="@+id/clock_imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:tint="@color/yellow"
                     app:layout_constraintEnd_toEndOf="@+id/clock_textView"
                     app:layout_constraintStart_toStartOf="@+id/clock_textView"
                     app:layout_constraintTop_toTopOf="@+id/heart_imageView"
-                    app:srcCompat="@drawable/ic_clock" />
+                    app:srcCompat="@drawable/ic_clock"
+                    app:tint="@color/yellow" />
 
                 <TextView
                     android:id="@+id/clock_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    tools:text="100"
                     android:setNumberOfMinutes="@{result.readyInMinutes}"
-                    android:textColor="@color/yellow"
                     android:textAlignment="center"
+                    android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/heart_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/clock_imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/clock_imageView"
+                    tools:text="100" />
 
                 <ImageView
                     android:id="@+id/leaf_imageView"
@@ -140,11 +142,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    tools:text="100"
                     android:applyVeganColor="@{result.vegan}"
                     android:textAlignment="center"
                     app:layout_constraintStart_toEndOf="@+id/clock_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/leaf_imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/leaf_imageView"
+                    tools:text="100" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

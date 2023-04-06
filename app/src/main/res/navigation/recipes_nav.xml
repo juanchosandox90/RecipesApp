@@ -16,6 +16,9 @@
             android:name="backFromBottomSheet"
             android:defaultValue="false"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_recipesFragment_to_detailsActivity"
+            app:destination="@id/detailsRecipesActivity" />
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
@@ -41,4 +44,13 @@
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
             app:destination="@id/recipesFragment" />
     </dialog>
+    <activity
+        android:id="@+id/detailsRecipesActivity"
+        android:name="com.sandoval.recipesapp.ui.details_recipes.DetailsRecipeActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details">
+        <argument
+            android:name="result"
+            app:argType="com.sandoval.recipesapp.data.models.Result" />
+    </activity>
 </navigation>
