@@ -12,6 +12,7 @@ import com.sandoval.recipesapp.ui.details_recipes.adapter.ViewPagerDetailRecipes
 import com.sandoval.recipesapp.ui.details_recipes.fragments.IngredientsFragment
 import com.sandoval.recipesapp.ui.details_recipes.fragments.InstructionsFragment
 import com.sandoval.recipesapp.ui.details_recipes.fragments.OverViewFragment
+import com.sandoval.recipesapp.utils.Constants.Companion.RECIPE_RESULT_KEY
 
 class DetailsRecipeActivity : AppCompatActivity() {
 
@@ -45,7 +46,7 @@ class DetailsRecipeActivity : AppCompatActivity() {
         titles.add("Instructions")
 
         val resultBundle = Bundle()
-        resultBundle.putParcelable("recipeBundle", args.result)
+        resultBundle.putParcelable(RECIPE_RESULT_KEY, args.result)
 
         val pagerAdapter = ViewPagerDetailRecipesAdapter(
             resultBundle, fragments, titles, supportFragmentManager

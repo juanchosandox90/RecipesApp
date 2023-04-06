@@ -10,6 +10,7 @@ import coil.load
 import com.sandoval.recipesapp.R
 import com.sandoval.recipesapp.databinding.FragmentOverViewBinding
 import com.sandoval.recipesapp.data.models.Result
+import com.sandoval.recipesapp.utils.Constants.Companion.RECIPE_RESULT_KEY
 import org.jsoup.Jsoup
 
 class OverViewFragment : Fragment() {
@@ -28,7 +29,7 @@ class OverViewFragment : Fragment() {
 
         val args = arguments
 
-        val myBundle: Result? = args?.getParcelable("recipeBundle")
+        val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         fragmentOverViewBinding.recipeImgView.load(myBundle?.image)
         fragmentOverViewBinding.recipeDetailTitleText.text = myBundle?.title
