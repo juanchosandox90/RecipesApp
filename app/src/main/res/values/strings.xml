@@ -61,4 +61,6 @@
     <string name="overview_fragment_cheap_imageview_desc">Cheap Imageview desc</string>
 
     <string name="ingredient_fragment_ingredient_imageview_desc">Ingredient content desc</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="share">Share</string>
 </resources>

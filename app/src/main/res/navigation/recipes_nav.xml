@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodJokeFragment"
-        android:name="com.sandoval.recipesapp.ui.fragments.FoodJokeFragment"
+        android:name="com.sandoval.recipesapp.ui.food_joke.fragments.FoodJokeFragment"
         android:label="Food Joke"
         tools:layout="@layout/fragment_food_joke" />
     <fragment
