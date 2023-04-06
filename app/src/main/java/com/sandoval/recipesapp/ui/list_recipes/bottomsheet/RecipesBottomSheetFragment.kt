@@ -46,8 +46,8 @@ class RecipesBottomSheetFragment : BottomSheetDialogFragment() {
         _bottomSheetRecipesFragmentBinding =
             FragmentRecipesBottomSheetBinding.inflate(layoutInflater)
 
-        recipesViewModel.readMealAndDietType.asLiveData()
-            .observe(viewLifecycleOwner) { value ->
+        recipesViewModel.readMealAndDietType?.asLiveData()
+            ?.observe(viewLifecycleOwner) { value ->
                 mealTypeChip = value.selectedMealType
                 dietTypeChip = value.selectedDietType
                 updateChip(

@@ -35,7 +35,7 @@ class RecipesViewModel @Inject constructor(
     var backOnline = false
 
     val readMealAndDietType = dataStoreRepository.readMealAndDietType
-    val readBackOnline = dataStoreRepository.readBackOnline.asLiveData()
+    val readBackOnline = dataStoreRepository.readBackOnline?.asLiveData()
 
     fun saveBackOnline(
         backOnline: Boolean,
@@ -54,7 +54,7 @@ class RecipesViewModel @Inject constructor(
     fun applyQueries(): HashMap<String, String> {
 
         viewModelScope.launch {
-            readMealAndDietType.collect { value ->
+            readMealAndDietType?.collect { value ->
                 mealType = value.selectedMealType
                 dietType = value.selectedDietType
             }
@@ -88,9 +88,6 @@ class RecipesViewModel @Inject constructor(
             ).show()
             saveBackOnline(true)
         } else if (networkStatus) {
-            Toast.makeText(
-                getApplication(), "Network is available", Toast.LENGTH_LONG
-            ).show()
             saveBackOnline(false)
         }
     }

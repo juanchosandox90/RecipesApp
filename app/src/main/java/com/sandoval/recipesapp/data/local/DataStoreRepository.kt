@@ -56,7 +56,7 @@ class DataStoreRepository @Inject constructor(
         }
     }
 
-    val readMealAndDietType: Flow<MealAndDietType> =
+    val readMealAndDietType: Flow<MealAndDietType>? =
         datastore.data.catch { exception ->
                 if (exception is IOException) {
                     emit(emptyPreferences())
@@ -82,7 +82,7 @@ class DataStoreRepository @Inject constructor(
                 )
             }
 
-    val readBackOnline: Flow<Boolean> = datastore.data.catch { exception ->
+    val readBackOnline: Flow<Boolean>? = datastore.data.catch { exception ->
         if (exception is IOException) {
             emit(emptyPreferences())
         } else {
