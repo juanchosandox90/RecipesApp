@@ -59,4 +59,6 @@
     <string name="overview_fragment_dairy_free_imageview_desc">Dairy Free Imageview Desc</string>
     <string name="overview_fragment_healthy_imageview_desc">Healthy Imageview Desc</string>
     <string name="overview_fragment_cheap_imageview_desc">Cheap Imageview desc</string>
+
+    <string name="ingredient_fragment_ingredient_imageview_desc">Ingredient content desc</string>
 </resources>
