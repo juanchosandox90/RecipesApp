@@ -4,10 +4,18 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.navArgs
 import com.sandoval.recipesapp.R
 import com.sandoval.recipesapp.databinding.ActivityDetailsBinding
+import com.sandoval.recipesapp.ui.details_recipes.adapter.ViewPagerDetailRecipesAdapter
+import com.sandoval.recipesapp.ui.details_recipes.fragments.IngredientsFragment
+import com.sandoval.recipesapp.ui.details_recipes.fragments.InstructionsFragment
+import com.sandoval.recipesapp.ui.details_recipes.fragments.OverViewFragment
 
 class DetailsRecipeActivity : AppCompatActivity() {
+
+    private val args: DetailsRecipeActivityArgs by navArgs()
 
     private var _detailsRecipesActivitybinding: ActivityDetailsBinding? = null
     private val detailsRecipesActivitybinding get() = _detailsRecipesActivitybinding!!
@@ -25,6 +33,28 @@ class DetailsRecipeActivity : AppCompatActivity() {
             )
         )
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val fragments = ArrayList<Fragment>()
+        fragments.add(OverViewFragment())
+        fragments.add(IngredientsFragment())
+        fragments.add(InstructionsFragment())
+
+        val titles = ArrayList<String>()
+        titles.add("Overview")
+        titles.add("Ingredients")
+        titles.add("Instructions")
+
+        val resultBundle = Bundle()
+        resultBundle.putParcelable("recipeBundle", args.result)
+
+        val pagerAdapter = ViewPagerDetailRecipesAdapter(
+            resultBundle, fragments, titles, supportFragmentManager
+        )
+
+        detailsRecipesActivitybinding.viewPager.adapter = pagerAdapter
+        detailsRecipesActivitybinding.tabLayout.setupWithViewPager(
+            detailsRecipesActivitybinding.viewPager
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
