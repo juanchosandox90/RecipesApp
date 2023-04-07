@@ -21,6 +21,8 @@
     <color name="placeholderColor">@color/mediumGray</color>
     <color name="itemColor">@color/darker</color>
 
+    <color name="toolbar_color">@color/darker</color>
+
     <!--CustomChip Colors-->
     <color name="checkedChipBackgroundColor">@color/dark</color>
     <color name="uncheckedChipBackgroundColor">@color/lightMediumGray</color>
