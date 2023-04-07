@@ -1,0 +1,82 @@
+[versions]
+################################################################
+# general project configuration
+################################################################
+kotlin = "1.8.20"
+gradlePlugins-agp = "7.4.2"
+################################################################
+# app dependencies configuration
+################################################################
+androidx-core-ktx-version = "1.9.0"
+androidx-appcompat-version = "1.6.1"
+google-material-version = "1.6.1"
+androidx-constraint-layout-version = "1.8.0"
+androidx-navigation-version = "2.5.3"
+koil-version = "1.3.0"
+google-gson-version = "2.8.9"
+facebook-shimmer-version = "0.5.0"
+todkars-shimmer-version = "0.4.0"
+retrofit-version = "2.9.0"
+dagger-hilt-version = "2.44.2"
+androidx-hilt-version = "1.0.0"
+room-version = "2.5.1"
+androidx-lifecycle-extension-version = "2.2.0"
+androirdx-lifecycle-runtime-version = "2.6.0"
+androirdx-lifecycle-viewmodel-version = "2.6.1"
+androirdx-lifecycle-livedata-version = "2.6.1"
+androidx-datastore-version = "1.0.0"
+jsoup-version = "1.13.1"
+################################################################
+# test dependencies configuration
+################################################################
+junit-version = "4.13.2"
+androidx-test-junit-version = "1.1.5"
+androidx-test-espresso-core-version = "3.5.1"
+androidx-test-core-version = "1.5.0"
+mockito-core-version = "5.2.0"
+io-mockk-version = "1.13.4"
+androidx-core-testing-version = "2.2.0"
+kotlinx-coroutines-test-version = "1.6.4"
+mockito-kotlin-version = "4.1.0"
+
+[libraries]
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx-version" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat-version" }
+google-material = { module = "com.google.android.material:material", version.ref = "google-material-version" }
+androidx-constraint-layout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraint-layout-version" }
+androidx-navigation = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation-version" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation-version" }
+io-coil-kt = { module = "io.coil-kt:coil", version.ref = "koil-version" }
+google-gson = { module = "com.google.code.gson:gson", version.ref = "google-gson-version" }
+facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "facebook-shimmer-version" }
+todkars-shimmer = { module = "com.todkars:shimmer-recyclerview", version.ref = "todkars-shimmer-version" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit-version" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit-version" }
+dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt-version" }
+dagger-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "dagger-hilt-version" }
+androidx-hilt = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-hilt-version" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-version" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-version" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-version" }
+androidx-lifecycle-extension = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidx-lifecycle-extension-version" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androirdx-lifecycle-runtime-version" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androirdx-lifecycle-viewmodel-version" }
+androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androirdx-lifecycle-livedata-version" }
+androidx-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore-version" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup-version"}
+
+junit = { module = "junit:junit", version.ref = "junit-version" }
+androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-junit-version" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso-core-version" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test-core-version" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core-version" }
+io-mockk = { module = "io.mockk:mockk", version.ref = "io-mockk-version" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "androidx-core-testing-version" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test-version" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin-version" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room-version" }
+
+[plugins]
+android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }

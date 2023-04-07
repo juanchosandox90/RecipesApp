@@ -1,3 +1,68 @@
 <resources>
-    <string name="app_name">RecipesApp</string>
+    <string name="app_name">Recipes App</string>
+    <string name="recipes_fragment">Recipes</string>
+    <string name="favorite_recipes_fragment">Favorites</string>
+    <string name="food_joke_fragment">Food Joke</string>
+    <string name="recipes_maps_fragment">Maps Recipes</string>
+    <string name="no_internet_connection_text">No Internet Connection.</string>
+    <string name="recipes_floating_button_text">recipes floating button</string>
+    <string name="error_image_view_text">error image view</string>
+
+    <!--Bottomsheet Recipes Strings-->
+    <!--Meal Type Bottomsheet ChipGroup and Chips Strings-->
+    <string name="bottomsheet_meal_type_title_text">Meal Type</string>
+    <string name="main_course_ship_text">Main Course</string>
+    <string name="side_dish_chip_text">Side Dish</string>
+    <string name="dessert_chip_text">Dessert</string>
+    <string name="appetizer_chip_text">Appetizer</string>
+    <string name="salad_chip_text">Salad</string>
+    <string name="bread_chip_text">Bread</string>
+    <string name="breakfast_chip_text">Breakfast</string>
+    <string name="soup_chip_text">Soup</string>
+    <string name="beverage_chip_text">Beverage</string>
+    <string name="sauce_chip_text">Sauce</string>
+    <string name="marinade_chip_text">Marinade</string>
+    <string name="fingerfood_chip_text">Fingerfood</string>
+    <string name="snack_chip_text">Snack</string>
+    <string name="drink_chip_text">Drink</string>
+
+    <!--Diet Type Bottomsheet ChipGroup and Chips Strings-->
+    <string name="bottomsheet_diet_type_title_text">Diet Type</string>
+    <string name="gluten_free_chip_text">Gluten Free</string>
+    <string name="ketogenic_chip_text">Ketogenic</string>
+    <string name="vegetarian_chip_text">Vegetarian</string>
+    <string name="lacto_vegetarian_chip_text">Lacto-Vegetarian</string>
+    <string name="ovo_vegetarian_chip_text">Ovo-Vegetarian</string>
+    <string name="vegan_chip_text">Vegan</string>
+    <string name="pescetarian_chip_text">Pescetarian</string>
+    <string name="paleo_chip_text">Paleo</string>
+    <string name="primal_chip_text">Primal</string>
+    <string name="apply_button_text">Apply</string>
+
+    <string name="recipes_menu_search_title">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Overview Fragment Strings-->
+    <string name="overview_fragment_vegetarian_tag">Vegetarian</string>
+    <string name="overview_fragment_vegan_tag">Vegan</string>
+    <string name="overview_fragment_gluten_free_tag">Gluten Free</string>
+    <string name="overview_fragment_dairy_free_tag">Dairy Free</string>
+    <string name="overview_fragment_healthy_tag">Healthy</string>
+    <string name="overview_fragment_cheap_tag">Cheap</string>
+    <string name="overview_fragment_image_view_desc">Image view overview</string>
+    <string name="overview_fragment_likes_imageview_desc">likes overview imageview</string>
+    <string name="overview_fragment_time_imageview_desc">time overview imageview desc</string>
+    <string name="overview_fragment_vegetarian_imageview_desc">vegetarian imageview desc</string>
+    <string name="overview_fragment_vegan_imageview_desc">vegan imageview desc</string>
+    <string name="overview_fragment_gluten_free_imageview_desc">Gluten Free Imageview Desc</string>
+    <string name="overview_fragment_dairy_free_imageview_desc">Dairy Free Imageview Desc</string>
+    <string name="overview_fragment_healthy_imageview_desc">Healthy Imageview Desc</string>
+    <string name="overview_fragment_cheap_imageview_desc">Cheap Imageview desc</string>
+
+    <string name="ingredient_fragment_ingredient_imageview_desc">Ingredient content desc</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="share">Share</string>
+
+    <string name="menu_map">Recipe Location</string>
 </resources>
