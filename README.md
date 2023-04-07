@@ -81,7 +81,7 @@ Recipes App project is using github actions, to be able to take advantages of th
 - Using ANDROID CI the repository builds the unit tests that are in the project and evaluate if a build has been succesfully created or not depending on the result of the test passed
 
 
-<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="Github Actions.jpg">
+<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="Github Actions.png">
 
 ## Contributions
 
