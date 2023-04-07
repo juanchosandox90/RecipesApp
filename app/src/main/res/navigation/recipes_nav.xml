@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_food_joke" />
     <fragment
         android:id="@+id/mapsRecipesFragments"
-        android:name="com.sandoval.recipesapp.ui.fragments.MapsRecipesFragments"
+        android:name="com.sandoval.recipesapp.ui.recipes_map.MapsRecipesFragments"
         android:label="Maps Recipes"
         tools:layout="@layout/fragment_maps_recipes_fragments" />
     <dialog

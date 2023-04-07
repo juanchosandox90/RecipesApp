@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-      <variable
-          name="mainViewModel"
-          type="com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel" />
+
+        <variable
+            name="mainViewModel"
+            type="com.sandoval.recipesapp.ui.list_recipes.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.RecipesFragment">
+        tools:context=".ui.list_recipes.fragments.RecipesFragment">
 
 
         <com.facebook.shimmer.ShimmerFrameLayout
@@ -65,12 +66,12 @@
 
         <ImageView
             android:id="@+id/error_imageView"
+            readApiResponse="@{mainViewModel.recipesResponse}"
+            readDatabase="@{mainViewModel.readRecipes}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="0.5"
             android:contentDescription="@string/error_image_view_text"
-            readApiResponse="@{mainViewModel.recipesResponse}"
-            readDatabase="@{mainViewModel.readRecipes}"
             android:src="@drawable/ic_sad"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,12 +82,12 @@
 
         <TextView
             android:id="@+id/error_textView"
+            readApiResponseText="@{mainViewModel.recipesResponse}"
+            readDatabaseText="@{mainViewModel.readRecipes}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0.5"
-            readApiResponseText="@{mainViewModel.recipesResponse}"
-            readDatabaseText="@{mainViewModel.readRecipes}"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             android:textStyle="bold"
