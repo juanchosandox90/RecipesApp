@@ -9,7 +9,7 @@ This an Android App project, to show the good practices of mobile development, u
 ## Design and View
 This are the screens of My Pokedex App
 
-| Mode  | Loading                                                       | Pokedex List Fragment                                                         | Pokedex Detail                                                          | Error                                                          |
+| Mode  | Recipes List                                                       | Recipes Filters                                                         | Recipes Location                                                          | Recipes Details                                                          |
 |-------|--------------------------------------------------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | Light | <img src="recipes_list.jpg" width="250"> | <img src="recipes_filters.jpg" width="250"> | <img src="recipes_location.jpg" width="250"> | <img src="recipes_details_overview.jpg" width="250"> |
 
@@ -44,7 +44,7 @@ Recipes App project, has unit-test that covers the complete pattern and architec
 - Domain (Unit tests for the Use Cases)
 - UI (Unit tests for the ViewModels)
 
-<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="Yape unit test.jpg">
+<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="Yape unit test.png">
 
 ## Code Coverage
 
